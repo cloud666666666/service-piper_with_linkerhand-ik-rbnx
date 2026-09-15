@@ -1,0 +1,10 @@
+# Carry a held object to the configured fixed put-down joint pose, open the
+# gripper there, then return the arm to the configured teach-safe pose.
+[contract]
+id      = "robonix/service/manipulation/put_down"
+version = "1"
+kind    = "service"
+idl     = "manipulation/srv/PutDown.srv"
+
+[mode]
+type = "rpc"

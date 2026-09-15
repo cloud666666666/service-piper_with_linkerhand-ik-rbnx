@@ -1,0 +1,50 @@
+# roboarm_ik_rbnx — manipulation service using roboarm-style Python IK.
+#
+# Alternative to piper_moveit_rbnx. It owns the same manipulation contracts,
+# but does not start MoveIt/move_group. It solves IK locally and publishes
+# JointState commands to the arm primitive.
+#
+# VENDORED REPACKAGING — provenance:
+#   upstream:  syswonder/service-roboarm-ik-rbnx
+#   revision:  919fdfcde885d83fa8e4cde0b0bb365dc1918523 (main, 2026-09-15)
+#   license:   unchanged — MulanPSL-2.0, exactly as upstream declares it.
+#   why:       the roboarm deploy reuses exactly one catalog package (the
+#              camera) and owns everything else in this repo.
+#
+# LOCAL DIFFERENCES vs upstream (the only two):
+#   * `grasp_mode: flat` → solve_flat(): a full-attitude geodesic cost over
+#     multiple starts with the wrist joints pinned at their taught angles,
+#     for flat-palm grasps. Upstream only does the vertical solve
+#     (position + tilt/yaw decomposition), which is still there behind
+#     `grasp_mode: vertical`. The default URDF lookup also accepts
+#     urdf/roboarm.urdf.
+#   * config.spec — added here; upstream ships none. Documentation only, values
+#     read out of this package's code.
+#
+# NAME: `arm_ik`, not `ik`. Upstream's own entry is
+# `robonix.service.roboarm.ik`, and both point at *different* repositories;
+# two catalog entries sharing one name would make resolution ambiguous. We are
+# not replacing theirs — they still maintain the vertical-only original.
+manifestVersion: 1
+
+package:
+  name: robonix.service.roboarm.arm_ik
+  version: 0.1.0
+  vendor: robonix
+  description: Roboarm-style Python IK executor service for Piper manipulation, with flat-palm and vertical solvers.
+  license: MulanPSL-2.0
+  tags: [service, manipulation, ik, agilex, piper, ros2]
+  maintainers:
+    - Joker.Yun <2353493891@qq.com>
+
+capability_id: roboarm_ik
+
+build: bash scripts/build.sh
+start: bash scripts/start.sh
+
+capabilities:
+  - name: robonix/service/manipulation/driver
+  - name: robonix/service/manipulation/execute_grasp
+  - name: robonix/service/manipulation/reset
+  - name: robonix/service/manipulation/teach_safe
+  - name: robonix/service/manipulation/put_down

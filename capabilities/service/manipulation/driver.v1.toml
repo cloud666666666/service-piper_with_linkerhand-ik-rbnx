@@ -1,0 +1,14 @@
+# Lifecycle interface every manipulation service implementation MUST
+# declare. `rbnx boot` calls Driver(CMD_INIT, config_json) against this
+# AFTER all primitives are init'd. This package depends on piper_ctl's
+# /arm/joint_states_single feedback (primitive/arm/joint_states) and
+# publishes joint commands back to piper_ctl on /arm/joint_command
+# (primitive/arm/joint_command).
+[contract]
+id      = "robonix/service/manipulation/driver"
+version = "1"
+kind    = "service"
+idl     = "lifecycle/srv/Driver.srv"
+
+[mode]
+type = "rpc"

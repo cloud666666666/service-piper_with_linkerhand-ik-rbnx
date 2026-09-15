@@ -1,0 +1,13 @@
+# Open the gripper to maximum width, then move the arm to the configured
+# teach-safe pose while keeping the gripper open. With hold_gripper=true, move
+# to teach-safe without releasing the gripper.
+#
+# IDL: lib/manipulation/srv/TeachSafe.srv (package-local).
+[contract]
+id      = "robonix/service/manipulation/teach_safe"
+version = "1"
+kind    = "service"
+idl     = "manipulation/srv/TeachSafe.srv"
+
+[mode]
+type = "rpc"

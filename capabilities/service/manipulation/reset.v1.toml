@@ -1,0 +1,16 @@
+# Park the arm at the configured init pose and open the gripper.
+# Used by Stage 6 pick_skill as a recovery hook and by direct tests
+# through the raw /moveit_control/reset ROS Trigger service.
+#
+# Idempotent — calling reset twice in a row is identical to once.
+# Safe to call when the arm is idle.
+#
+# IDL: lib/manipulation/srv/Reset.srv (package-local).
+[contract]
+id      = "robonix/service/manipulation/reset"
+version = "1"
+kind    = "service"
+idl     = "manipulation/srv/Reset.srv"
+
+[mode]
+type = "rpc"

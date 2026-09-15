@@ -1,0 +1,15 @@
+# Solve IK and execute a grasp motion through piper_ctl's
+# /arm/joint_command command topic. Caller provides a target grasp pose
+# plus a gripper width. This roboarm_ik provider owns the same
+# atlas-routed manipulation contract as piper_moveit, but does not
+# require MoveIt to be running.
+#
+# IDL: lib/manipulation/srv/ExecuteGrasp.srv (package-local).
+[contract]
+id      = "robonix/service/manipulation/execute_grasp"
+version = "1"
+kind    = "service"
+idl     = "manipulation/srv/ExecuteGrasp.srv"
+
+[mode]
+type = "rpc"

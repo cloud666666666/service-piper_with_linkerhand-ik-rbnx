@@ -1,0 +1,22 @@
+# Park the arm at the configured init pose and open the gripper. Used
+# by Stage 6 pick_skill as a recovery hook when a previous grasp got
+# stuck mid-motion.
+#
+# Schema is intentionally minimal — no inputs, just a status response.
+# The ack marker keeps codegen request types non-empty.
+
+# Request
+
+# Marker field; callers should pass true.
+bool ack
+---
+# Response
+
+# Whether the reset completed.
+bool success
+
+# Status / error message.
+string message
+
+# Wall-clock seconds the reset took.
+float32 elapsed_s

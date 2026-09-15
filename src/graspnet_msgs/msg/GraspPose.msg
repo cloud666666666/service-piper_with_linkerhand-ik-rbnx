@@ -1,0 +1,2 @@
+geometry_msgs/PoseStamped target_pose
+float32 gripper_width

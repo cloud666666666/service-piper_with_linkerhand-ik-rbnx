@@ -1,0 +1,13 @@
+# Execute the configured fixed-position put-down sequence.
+
+# Request marker; callers should pass true.
+bool ack
+---
+# Whether the full put-down and teach-safe return completed.
+bool success
+
+# Human-readable status.
+string message
+
+# Wall-clock seconds the operation took.
+float32 elapsed_s
