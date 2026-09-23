@@ -21,14 +21,15 @@
 #   * config.spec — added here; upstream ships none. Documentation only, values
 #     read out of this package's code.
 #
-# NAME: `arm_ik`, not `ik`. Upstream's own entry is
-# `robonix.service.roboarm.ik`, and both point at *different* repositories;
-# two catalog entries sharing one name would make resolution ambiguous. We are
-# not replacing theirs — they still maintain the vertical-only original.
+# NAME: `arm_ik`, not `ik`. The name came out of the old `roboarm` namespace,
+# where it existed to avoid colliding with upstream's own
+# `robonix.service.roboarm.ik` — a *different* repository with a different
+# solver set, so the two are not interchangeable and the suffix still earns its
+# keep. We are not replacing theirs; they maintain the vertical-only original.
 manifestVersion: 1
 
 package:
-  name: robonix.service.roboarm.arm_ik
+  name: robonix.service.piper_with_linkerhand.arm_ik
   version: 0.1.0
   vendor: robonix
   description: Roboarm-style Python IK executor service for Piper manipulation, with flat-palm and vertical solvers.

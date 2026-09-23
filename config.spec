@@ -1,4 +1,4 @@
-# Public deploy config for robonix.service.roboarm.arm_ik.
+# Public deploy config for robonix.service.piper_with_linkerhand.arm_ik.
 # Values below are the ones this deploy uses; the type/unit/constraint note
 # above each key is the contract.
 config:
